@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
  
-api = Blueprint('api', __name__, url_prefix='/api/v1') 
+api = Blueprint('api', __name__, url_prefix='/api/v1') # Since you use url_prefix , you can avoid URL collisions between Flask Blueprint routes.
 
 TEST_ITEM = {
     "id": 1,
@@ -12,7 +12,7 @@ TEST_ITEM = {
     "updated_at": "2023-02-20T00:00:00"
 }
  
-@api.route('/health') 
+@api.route('/health') # when you register a Blueprint, you can use @.route() decorator
 def health():
     """Return a status of 'ok' if the server is running and listening to request"""
     return jsonify({"status": "ok"})
